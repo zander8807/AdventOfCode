@@ -7,28 +7,18 @@ def get_depths():
 
 
 def increases_for_window_size(depths, window_size):
-    buffer = [None] * window_size  # using as circular buffer
-    curr_sum = 0
     increases = 0
 
-    for i in range(len(depths)):
-        depth = depths[i]
+    # since the we're checking if `b + c + d > a + b + c`, we can reduce it to `d > a`. we can then simply compare
+    # the edges of the window to see if the depths are increasing over a given window
+    left = 0
+    right = window_size
 
-        buffer_idx = i % window_size
-        old_depth = buffer[buffer_idx]
-        buffer[buffer_idx] = depth
-
-        new_sum = curr_sum + depth
-
-        if old_depth is not None:
-            # we've filled our buffer, therefore we'll need to remove the old value from our running sum
-            new_sum -= old_depth
-
-            # since we've seen enough depths, we can start incrementing the increased depths counter as appropriate
-            if new_sum > curr_sum:
-                increases += 1
-
-        curr_sum = new_sum
+    while right < len(depths):
+        if depths[right] > depths[left]:
+            increases += 1
+        left += 1
+        right += 1
 
     return increases
 
