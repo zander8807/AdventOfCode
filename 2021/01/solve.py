@@ -9,8 +9,8 @@ def get_depths():
 def increases_for_window_size(depths, window_size):
     increases = 0
 
-    # since the we're checking if `b + c + d > a + b + c`, we can reduce it to `d > a`. we can then simply compare
-    # the edges of the window to see if the depths are increasing over a given window
+    # since we're checking if `b + c + d > a + b + c`, we can reduce it to `d > a`. we can then simply compare
+    # the edges of the window to see if the depths are increasing over time
     left = 0
     right = window_size
 
