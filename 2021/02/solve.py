@@ -1,5 +1,5 @@
 import csv
-from os import defpath
+from functools import reduce
 
 
 def get_directions():
@@ -16,13 +16,7 @@ def get_directions():
 
 
 def direction_multiple(directions):
-    forward = 0
-    depth = 0
-    for (f, d) in directions:
-        forward += f
-        depth += d
-
-    return forward * depth
+    return reduce(lambda x, y: x * y, map(sum, zip(*directions)))
 
 
 def direction_multiple_with_aim(directions):
