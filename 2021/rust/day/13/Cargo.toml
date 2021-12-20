@@ -1,0 +1,10 @@
+[package]
+name = "aoc-solution"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+structopt = "0.3.25"
+reqwest = {version = "0.11.7", features = ["blocking", "cookies"]}
